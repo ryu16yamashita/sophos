@@ -1,0 +1,168 @@
+.folder-page { min-height: 100vh; background: var(--bg); padding-bottom: 3rem; }
+
+.folder-topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.back-link { font-size: 0.9rem; color: var(--yellow); }
+
+.filter-tabs { display: flex; gap: 6px; }
+.tab {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border-light);
+  background: transparent;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.tab.active, .tab:hover { border-color: var(--yellow); color: var(--yellow); background: rgba(245,158,11,0.1); }
+
+.share-form { display: flex; gap: 6px; margin-left: auto; }
+.share-form input { padding: 7px 12px; border-radius: 8px; font-size: 0.85rem; width: 220px; }
+
+/* Centered add/study buttons */
+.add-card-bar {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  padding: 0 1.5rem;
+}
+.card-wrapper { display: flex; flex-direction: column; }
+
+/* Flip card */
+.flashcard { perspective: 1000px; cursor: pointer; }
+.card-inner {
+  position: relative;
+  width: 100%;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  min-height: 240px;
+}
+.flashcard.flipped .card-inner { transform: rotateY(180deg); }
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  min-height: 240px;
+  backface-visibility: hidden;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border-light);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.card-back {
+  transform: rotateY(180deg);
+  background: var(--surface-2);
+  border-color: var(--brand-mid);
+  justify-content: flex-start;
+  padding-top: 1rem;
+}
+
+.flashcard.starred .card-front  { border-color: var(--yellow); }
+.flashcard.understood .card-front { border-color: var(--success); }
+
+.card-front img { max-width: 100%; max-height: 180px; object-fit: contain; border-radius: 6px; }
+.card-back img  { max-width: 100%; max-height: 160px; object-fit: contain; border-radius: 6px; margin-bottom: 8px; }
+
+.flip-hint { font-size: 0.72rem; color: var(--text-muted); margin-top: 8px; cursor: pointer; }
+.flip-hint:hover { color: var(--yellow); }
+.no-answer { color: var(--text-muted); font-size: 0.85rem; text-align: center; }
+
+/* Explanation */
+.explanation-display {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border: 1px dashed var(--border-light);
+}
+.explanation-display:hover { background: rgba(245,158,11,0.07); border-color: var(--yellow); }
+.explanation-display.has-text { border-style: solid; }
+.explanation-label { font-size: 0.7rem; font-weight: 600; color: var(--yellow); margin-bottom: 4px; display: block; }
+.explanation-text { font-size: 0.8rem; color: var(--text); line-height: 1.5; white-space: pre-wrap; max-height: 80px; overflow-y: auto; }
+.explanation-placeholder { font-size: 0.78rem; color: var(--text-muted); font-style: italic; }
+.explanation-editor { width: 100%; margin-top: 8px; }
+.explanation-editor textarea { width: 100%; padding: 8px 10px; border-radius: 8px; font-size: 0.8rem; font-family: inherit; resize: none; line-height: 1.5; color: var(--text); }
+.explanation-actions { display: flex; gap: 6px; margin-top: 6px; }
+
+/* Card action buttons */
+.card-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  padding: 8px 0 0;
+  flex-wrap: wrap;
+}
+.card-actions button, .card-actions label {
+  background: var(--surface-2);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+}
+.card-actions button:hover, .card-actions label:hover { background: rgba(245,158,11,0.12); border-color: var(--yellow); }
+.card-actions .star-active { color: var(--yellow); border-color: var(--yellow); }
+.card-actions .understood-active { color: var(--success); border-color: var(--success); }
+.card-actions .delete-btn:hover { background: rgba(239,71,111,0.12); border-color: var(--danger); color: var(--danger); }
+.card-actions .upload-img { width: 22px; height: 22px; object-fit: contain; }
+
+/* ── Custom confirm modal (shared style) ─────────────── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.15s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal-box {
+  background: var(--surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: 16px;
+  padding: 2rem 2rem 1.5rem;
+  width: 100%; max-width: 360px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.7);
+  text-align: center;
+  animation: slideUp 0.2s ease;
+}
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-box h3 { font-size: 1.1rem; color: var(--text); margin-bottom: 0.5rem; }
+.modal-box p  { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+.modal-actions { display: flex; gap: 10px; }
+.modal-actions button { flex: 1; padding: 10px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; border: none; }
+.modal-btn-yes { background: var(--danger); color: #fff; }
+.modal-btn-yes:hover { opacity: 0.85; }
+.modal-btn-no  { background: var(--surface-2); color: var(--text); border: 1.5px solid var(--border-light) !important; }
+.modal-btn-no:hover { border-color: var(--yellow) !important; color: var(--yellow); }

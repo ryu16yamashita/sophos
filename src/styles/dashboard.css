@@ -1,0 +1,208 @@
+.dashboard { min-height: 100vh; background: var(--bg); }
+
+/* ── Header ─────────────────────────────────────────── */
+.dash-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 62px;
+}
+
+.dash-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dash-logo img, .dash-logo svg {
+  width: 36px; height: 36px; object-fit: contain;
+}
+.dash-logo .brand-name { font-size: 1.3rem; }
+
+.dash-clock {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+}
+
+.dash-user {
+  display: flex; align-items: center; gap: 1rem;
+  justify-content: flex-end;
+  font-size: 0.9rem; color: var(--text-muted);
+}
+
+/* ── Tab bar (replaces banner) ───────────────────────── */
+.dash-tabs {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  gap: 0;
+}
+.dash-tab {
+  padding: 14px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -2px;
+}
+.dash-tab:hover { color: var(--text); }
+.dash-tab.active { color: var(--yellow); border-bottom-color: var(--yellow); }
+
+/* ── Main ────────────────────────────────────────────── */
+.dash-main { padding: 2rem; max-width: 960px; margin: 0 auto; }
+.dash-section { margin-bottom: 2.5rem; }
+.dash-section h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text); }
+
+.new-folder-form { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
+.new-folder-form input {
+  flex: 1; min-width: 160px;
+  padding: 9px 14px; border-radius: 8px; font-size: 0.95rem;
+}
+
+/* ── Emoji picker ────────────────────────────────────── */
+.emoji-picker {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border-light);
+  border-radius: 10px; padding: 10px; margin-bottom: 12px;
+}
+.emoji-btn {
+  font-size: 1.4rem; background: none;
+  border: 2px solid transparent; border-radius: 8px;
+  cursor: pointer; padding: 4px 6px; line-height: 1;
+  transition: background 0.12s, border-color 0.12s;
+}
+.emoji-btn:hover { background: rgba(245,158,11,0.15); }
+.emoji-btn.selected { border-color: var(--yellow); background: rgba(245,158,11,0.2); }
+
+/* ── Folder grid ─────────────────────────────────────── */
+.folder-grid {
+  display: flex; flex-wrap: wrap;
+  gap: 1rem; justify-content: center;
+}
+
+.folder-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1rem; width: 140px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 8px;
+  text-decoration: none;
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+.folder-card:hover { box-shadow: 0 0 0 2px var(--yellow); border-color: var(--yellow); }
+.folder-emoji { font-size: 2rem; }
+.folder-name { font-size: 0.88rem; font-weight: 600; color: var(--text); text-align: center; word-break: break-word; }
+
+/* ── Folder card wrapper + 3-dot menu ───────────────── */
+.folder-card-wrap { position: relative; width: 140px; }
+
+.folder-menu-btn {
+  position: absolute; top: 6px; right: 6px;
+  background: rgba(0,0,0,0.5);
+  border: none; border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 1rem; cursor: pointer;
+  padding: 2px 7px; line-height: 1;
+  opacity: 0; transition: opacity 0.15s; z-index: 2;
+}
+.folder-card-wrap:hover .folder-menu-btn { opacity: 1; }
+
+.folder-dropdown {
+  position: absolute; top: 30px; right: 4px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border-light);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  z-index: 20; min-width: 168px; overflow: hidden;
+}
+.folder-dropdown button {
+  display: flex; align-items: center; gap: 8px;
+  width: 100%; padding: 10px 14px;
+  background: none; border: none;
+  color: var(--text); font-size: 0.88rem;
+  cursor: pointer; text-align: left;
+  transition: background 0.12s; font-family: inherit;
+}
+.folder-dropdown button:hover { background: rgba(245,158,11,0.1); color: var(--yellow); }
+.folder-dropdown .danger:hover { background: rgba(239,71,111,0.1); color: var(--danger); }
+.folder-dropdown hr { border: none; border-top: 1px solid var(--border); margin: 2px 0; }
+
+.folder-shared-badge {
+  font-size: 0.7rem;
+  background: rgba(6,214,160,0.15); color: var(--success);
+  border-radius: 4px; padding: 2px 6px;
+  border: 1px solid rgba(6,214,160,0.3);
+}
+
+.folder-rename-input {
+  width: 100%; padding: 5px 8px;
+  border-radius: 6px; font-size: 0.82rem; text-align: center; margin-top: 4px;
+}
+
+/* ── Custom confirm modal ────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.15s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-box {
+  background: var(--surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: 16px;
+  padding: 2rem 2rem 1.5rem;
+  width: 100%; max-width: 360px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.7);
+  text-align: center;
+  animation: slideUp 0.2s ease;
+}
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.modal-box h3 { font-size: 1.1rem; color: var(--text); margin-bottom: 0.5rem; }
+.modal-box p  { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+.modal-actions { display: flex; gap: 10px; }
+.modal-actions button { flex: 1; padding: 10px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; border: none; }
+.modal-btn-yes { background: var(--danger); color: #fff; }
+.modal-btn-yes:hover { opacity: 0.85; }
+.modal-btn-no  { background: var(--surface-2); color: var(--text); border: 1.5px solid var(--border-light) !important; }
+.modal-btn-no:hover { border-color: var(--yellow) !important; color: var(--yellow); }
+
+/* ── Edit icon modal ─────────────────────────────────── */
+.icon-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+}
+.icon-modal-box {
+  background: var(--surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 100%; max-width: 420px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.7);
+  animation: slideUp 0.2s ease;
+}
+.icon-modal-box h3 { font-size: 1rem; color: var(--text); margin-bottom: 1rem; text-align: center; }
+.icon-modal-grid {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  max-height: 260px; overflow-y: auto;
+  margin-bottom: 1rem;
+}
+.icon-modal-actions { display: flex; gap: 8px; }

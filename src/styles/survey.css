@@ -1,0 +1,32 @@
+.survey-section { display: flex; flex-direction: column; gap: 8px; }
+
+.survey-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.survey-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.survey-chip {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border-light);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.survey-chip:hover { border-color: var(--yellow); color: var(--yellow); }
+.survey-chip.selected {
+  background: var(--yellow);
+  color: #1a1a1a;
+  border-color: var(--yellow);
+  font-weight: 600;
+}

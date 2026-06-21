@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cinzel:wght@700&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+  --brand: #3730a3;
+  --brand-mid: #4f46e5;
+  --brand-light: #1e1b4b;
+  --yellow: #f59e0b;
+  --yellow-light: #fef3c7;
+  --yellow-dark: #d97706;
+  --success: #06D6A0;
+  --danger: #EF476F;
+  --bg: #0a0a0f;
+  --surface: #13131f;
+  --surface-2: #1c1c2e;
+  --border: #2a2a3d;
+  --border-light: #3a3a50;
+  --text: #f0f0f5;
+  --text-muted: #8888aa;
+  --radius: 12px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.6);
+  --font-brand: 'Playfair Display', 'Georgia', serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+a { color: var(--yellow); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.brand-name {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #fff 30%, var(--yellow) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary {
+  background: var(--brand-mid);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-family: inherit;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-yellow {
+  background: var(--yellow);
+  color: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-family: inherit;
+}
+.btn-yellow:hover { opacity: 0.88; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--yellow);
+  border: 1.5px solid var(--yellow);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+.btn-ghost:hover { background: rgba(245,158,11,0.12); }
+
+input, textarea, select {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1.5px solid var(--border-light);
+  font-family: inherit;
+}
+input::placeholder, textarea::placeholder { color: var(--text-muted); }
+input:focus, textarea:focus { border-color: var(--yellow); outline: none; }
+
+.loading { padding: 2rem; text-align: center; color: var(--text-muted); }
